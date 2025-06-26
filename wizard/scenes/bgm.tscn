@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6bbb5ri45qbg"]
+
+[ext_resource type="AudioStream" uid="uid://c076xq1mpadkl" path="res://wizard/Audio/BGM.ogg" id="1_vsmgx"]
+
+[node name="BGM" type="AudioStreamPlayer"]
+stream = ExtResource("1_vsmgx")
+volume_db = -15.174
+autoplay = true

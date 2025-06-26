@@ -1,0 +1,72 @@
+[gd_scene load_steps=14 format=3 uid="uid://by2rbcur0clb"]
+
+[ext_resource type="Script" path="res://wizard/Scripts/bullet.gd" id="1_fjmkv"]
+[ext_resource type="Texture2D" uid="uid://cb0cfnv4lmr0c" path="res://wizard/Sprites/bullet/Water_Effect/01/Water__01.png" id="1_pfogm"]
+[ext_resource type="Texture2D" uid="uid://bkdcg1mvmybgd" path="res://wizard/Sprites/bullet/Water_Effect/01/Water__02.png" id="2_xd6wu"]
+[ext_resource type="Texture2D" uid="uid://4s4qo30e8bw1" path="res://wizard/Sprites/bullet/Water_Effect/01/Water__03.png" id="3_w7x5a"]
+[ext_resource type="Texture2D" uid="uid://1knoilre8j4j" path="res://wizard/Sprites/bullet/Water_Effect/01/Water__04.png" id="4_67o0o"]
+[ext_resource type="Texture2D" uid="uid://bakfcd11vvg4m" path="res://wizard/Sprites/bullet/Water_Effect/01/Water__05.png" id="5_hmiax"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1aqtn"]
+atlas = ExtResource("1_pfogm")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xr1t6"]
+atlas = ExtResource("2_xd6wu")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4q6i4"]
+atlas = ExtResource("3_w7x5a")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7e6m"]
+atlas = ExtResource("4_67o0o")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgvlr"]
+atlas = ExtResource("5_hmiax")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ctks4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1aqtn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xr1t6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4q6i4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7e6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgvlr")
+}],
+"loop": true,
+"name": &"water_magic",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xsbsh"]
+radius = 6.08276
+
+[node name="Area2D" type="Area2D" groups=["bullet"]]
+script = ExtResource("1_fjmkv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -1)
+scale = Vector2(0.173333, 0.146667)
+sprite_frames = SubResource("SpriteFrames_ctks4")
+animation = &"water_magic"
+autoplay = "water_magic"
+frame_progress = 0.470218
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xsbsh")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="screen_exited"]
